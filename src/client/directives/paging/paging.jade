@@ -1,0 +1,14 @@
+.paging-dir(ng-show='total')
+  pagination(ng-model='opts.page', total='total', page-size='opts.pageSize', prev-text='<', next-text='>')
+  .page-count(ng-show='total > 10')
+    span {{m('paging-text-pre')}}
+    .page-size(popout)
+      a {{opts.pageSize}}
+      .popout
+        a.ps100(tap='opts.pageSize=100;opts.page=1', ng-class='{selected:opts.pageSize===100}') 100
+        a.ps50(tap='opts.pageSize=50;opts.page=1', ng-class='{selected:opts.pageSize===50}') 50
+        a.ps25(tap='opts.pageSize=25;opts.page=1', ng-class='{selected:opts.pageSize===25}') 25
+        a.ps10(tap='opts.pageSize=10;opts.page=1', ng-class='{selected:opts.pageSize===10}') 10
+    span {{m('paging-text-post')}}
+  .list-total {{m('paging-total-label')}} 
+    span {{total}}

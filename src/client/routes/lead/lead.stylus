@@ -1,0 +1,6 @@
+@import '../../variables'
+.lead-route
+  .radios
+    display flex
+  .details
+    flex 1

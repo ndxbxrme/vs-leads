@@ -1,0 +1,90 @@
+include ../../mixins/form.jade
+.lead-route
+  +form({data:'lead'}).panel(ng-show='editing')
+    .row.heading
+      .left
+        h1(ng-show='lead.item && !lead.item._id') {{m('lead-heading-adding')}}
+        h1(ng-show='lead.item && lead.item._id') {{m('lead-heading-editing', lead.item)}}
+      .right
+        .radios
+          .radio
+            input#rts(type='radio', name='roleType', ng-model='lead.item.roleType', value='Selling')
+            label(for='rts') Selling
+          .radio
+            input#rtl(type='radio', name='roleType', ng-model='lead.item.roleType', value='Letting')
+            label(for='rtl') Letting
+          .radio
+            input#rtv(type='radio', name='roleType', ng-model='lead.item.roleType', value='Valuation')
+            label(for='rtv') Valuation
+    .form-row(ng-if='!lead.item._id', ng-hide='lead.item.roleType==="Valuation"')
+      .form-label {{ m('lead-property-label') }}
+      +select({name:'selectedProperty', model:'$parent.$parent.selectedProperty', list:'selling.items', errors:{required:true}})(ng-if='lead.item.roleType==="Selling"')
+      +select({name:'selectedProperty', model:'$parent.$parent.selectedProperty', list:'letting.items', errors:{required:true}})(ng-if='lead.item.roleType==="Letting"')
+    .form-row
+      hr
+    .form-row
+      .form-label {{ m('lead-name-label') }}
+      .user
+        +input({name:'usertitle', model:'lead.item.user.title', errors:{required:true}})
+        +input({name:'userfirst_name', model:'lead.item.user.first_name', errors:{required:true}})
+        +input({name:'userlast_name', model:'lead.item.user.last_name', errors:{required:true}})
+    .form-row
+      .form-label {{ m('lead-phone-label') }}
+      +input({name:'userphone_day', model:'lead.item.user.phone_day'})
+    .form-row
+      .form-label 
+      +input({name:'email'})
+    .form-row
+      .form-label {{ m('lead-addressSection-label') }}
+      .address
+        +input({name:'useraddress', model:'lead.item.user.address', errors:{required:true}})
+        +input({name:'useraddress2', model:'lead.item.user.address2'})
+        +input({name:'userpostcode', model:'lead.item.user.postcode', errors:{required:true}})
+    .form-row
+      .form-label {{ m('lead-source-label') }}
+      +select({name:'method', list:'sources.items', errors:{required:true}})
+    +controls()
+  .lead(ng-show='!editing')
+    .row
+      .left
+        h1 {{ m('lead-heading') }} 
+          span - {{ lead.item.property.address || lead.item.user.address}}, {{ lead.item.property.postcode || lead.item.user.postcode}}
+      .right
+        .price {{ lead.item.price | currency:'£'}}
+    .row
+      hr
+    .form-row
+      .form-label
+        .source {{ lead.item.source}} {{ lead.item.method }}
+        h3 {{ m('lead-contact-details-heading') }}
+        .name {{ lead.item.applicant }}
+        a.email(href='mailto:{{ lead.item.email }}') {{ lead.item.email }}
+        .phone {{ lead.item.user.phone_day }}
+      .details
+        .row
+          .left
+            .date {{ lead.item.date | date:'mediumDate' }}
+          .right
+            button.btn(ng-click='editing=true') Edit
+        .comment
+          h3 {{ m('lead-comments-heading') }}
+          p {{ lead.item.comments }}
+        .controls
+          button.btn.delete(type='button', ng-click='deleteLead()') {{ m('lead-delete-button') }}
+          button.btn.booking(type='button', ng-click='bookLead()') {{ m('lead-booking-button') }}
+    .case-notes
+      h2.orange {{ m('lead-notes-heading') }}
+      .case-note(ng-repeat='note in notesData = ( getNotes() | orderBy:"-date" ) | limitTo:notesLimit:notesLimit*(notesPage-1)')
+        .date {{note.date | date:'mediumDate'}}, {{note.date | date:'shortTime'}} | 
+          img(gravatar-src='note.user.local.email')  
+          span {{note.user.displayName || note.user.local.email}}
+          a.delete(href='', ng-click='deleteNote(note)', ng-show='auth.checkRoles(["admin", "superadmin"]) && !note.advanceTo') Delete
+          a.edit(href='', ng-click='editNote(note)', ng-show='auth.checkRoles(["admin","superadmin"]) && !note.advanceTo') Edit
+        .note 
+          .details
+            span(ng-show='note.side') - {{note.side}}
+            .note-body(ng-bind-html='note.text | markdown:true')
+      pagination.pagination-sm.pagination(total='notesData.length', ng-model='notesPage', page-size='notesLimit')
+      .add-note
+          code-mirror(ng-model='note.text', options='{mode:markdown, lineWrapping:true}')
+          button(ng-click='addNote()') {{note.date?'Update':'Add'}} Note

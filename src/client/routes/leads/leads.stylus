@@ -1,0 +1,4 @@
+@import '../../variables'
+.leads-route
+  .search-box
+    width 23rem

@@ -1,0 +1,43 @@
+@import '../../variables'
+.menu-dir
+  no-select()
+  &.main-menu
+    margin-left 4rem
+    a
+      padding .61rem 0
+      margin 0 .82rem
+      color vs-text
+      &.selected
+        color vs-link
+        border-bottom 3px solid vs-link
+    .log-out
+      display none
+  &.mobile-menu
+    position fixed
+    top 72px
+    right 0
+    width 180px
+    opacity 1
+    ul
+      flex-direction column
+    a
+      background vs-white
+      font-size 1.6rem
+      color vs-text
+      box-sizing border-box
+      padding 1rem
+      display block
+      border-bottom .1rem solid #d7dadd
+      text-decoration none
+      &.selected
+        color vs-red
+      &:hover
+        background mix(#fff, vs-text, 90)
+    &.ng-hide
+      display block!important
+      opacity 0
+      transition opacity 0.6s
+.mobile
+  .menu-dir.mobile-menu
+    overflow-Y scroll
+    height calc(100vh - 72px)

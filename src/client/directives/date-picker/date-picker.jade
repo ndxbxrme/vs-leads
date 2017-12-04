@@ -1,0 +1,34 @@
+.date-picker-holder(ng-click='done()')
+  .date-picker-box(ng-click='$event.stopPropagation()')
+    .date-picker
+      .carousel
+        .month(class='month-{{$index+1}} month-{{m.year}}-{{m.month+1}}', ng-repeat='m in months track by $index')
+          .dates(ng-show='mode==="date"')
+            .month-holder
+              .left
+                .prev(tap='monthPrev()') &lt;
+              .month-name
+                | {{m.monthName}} 
+                span.month-year(ng-click='toggleMode()') {{m.year}}
+              .right
+                .next(tap='monthNext()') &gt;
+            ul.day-names
+              li(ng-repeat='n in dayNames track by $index', ng-class="{'is-weekend': $first || $last}")
+                .day-name {{n}}
+            ul.days
+              li(ng-repeat='d in m.days track by $index', ng-click='setDate(d.date, true)', ng-class='setClass(d, m)')
+                .date {{d.num}}
+          .years(ng-show='mode==="year"')
+            .month-holder
+              .left
+                .prev(tap='monthPrev()') &lt;
+              .month-name
+                | {{m.monthName}} 
+                span.month-year.open(ng-click='toggleMode()') {{m.year}}
+              .right
+                .next(tap='monthNext()') &gt;
+            ul.year-list
+              li(ng-repeat='y in m.years track by $index', tap='setYear(y)') {{y}}
+    .controls(ng-hide='closeOnSelect')
+      .button-row
+        a.done.btn(ng-click='done()') Done

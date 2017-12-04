@@ -1,0 +1,45 @@
+.leads-route
+  .row
+    h1 {{m('leads-' + roleType + '-heading')}}
+    button.btn(ui-sref='lead-new', ng-show='auth.isAuthorized("lead-new")') {{m('leads-button-add')}}
+  .controls.row
+    .left
+      .sort Order By:
+        a.order-item(href='', ng-click='sort.set("modifiedAt")', ng-class='sort.class("modifiedAt")') Last Updated
+        a.order-item(href='', ng-click='sort.set("date")', ng-class='sort.class("date")') Enquiry Date
+    .right
+      .search-box
+        input(type='text', ng-model='leads.args.where.s.$like')
+        .total Showing {{leads.total}} of {{allleads.total}} leads
+  table.list-table(ng-show='leads.total')
+    thead
+      tr
+        th.source
+          span {{ m('leads-table-source') }}
+        th.address
+          span {{ m('leads-table-address') }}
+        th.applicant
+          span {{ m('leads-table-applicant') }}
+        th.date
+          span {{ m('leads-table-date') }}
+        th.options
+          span {{ m('leads-table-options') }}
+    tbody(ng-repeat='lead in leads.items')
+      tr
+        td.source
+          label {{ m('leads-table-source') }}
+          span {{ lead.source }}  {{ lead.method }}
+        td.address
+          label {{ m('leads-table-address') }}
+          span {{ lead.property.address || lead.user.address}}, {{ lead.property.postcode || lead.user.postcode}}, {{ lead.price | currency:'£'}}
+        td.applicant
+          label {{ m('leads-table-applicant') }}
+          span {{lead.applicant}}
+        td.date
+          label {{ m('leads-table-date') }}
+          span {{lead.date | date:'medium'}}
+        td.options
+          label {{ m('leads-table-options') }}
+          button.btn(ui-sref='lead({_id:lead._id})') {{ m('leads-button-view-lead') }}
+  p(ng-show='leads.items && !leads.total') {{ m('leads-message-no-items') }}
+  paging(total='leads.total', opts='leads.args')

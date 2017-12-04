@@ -1,1 +1,53 @@
-.dashboard-route welcome to ndx-framework
+.dashboard-route
+  h1 {{ m('dashboard-heading') }}
+  table.selling
+    thead
+      tr
+        th(colspan='2') {{ m('dashboard-table-selling-heading') }}
+    tbody
+      tr.head-two
+        td {{ m('dashboard-table-selling-status') }}
+        td {{ m('dashboard-table-selling-position') }}
+      tr
+        td {{ m('dashboard-table-selling-today') }}
+        td {{ sellingToday.total }}
+      tr
+        td {{ m('dashboard-table-selling-outstanding') }}
+        td {{ sellingOutstanding.total }}
+      tr
+        td {{ m('dashboard-table-selling-total') }}
+        td {{ sellingToday.total + sellingOutstanding.total }}
+  table.letting
+    thead
+      tr
+        th(colspan='2') {{ m('dashboard-table-letting-heading') }}
+    tbody
+      tr.head-two
+        td {{ m('dashboard-table-letting-status') }}
+        td {{ m('dashboard-table-letting-position') }}
+      tr
+        td {{ m('dashboard-table-letting-today') }}
+        td {{ lettingToday.total }}
+      tr
+        td {{ m('dashboard-table-letting-outstanding') }}
+        td {{ lettingOutstanding.total }}
+      tr
+        td {{ m('dashboard-table-letting-total') }}
+        td {{ lettingToday.total + lettingOutstanding.total }}
+  table.valuation
+    thead
+      tr
+        th(colspan='2') {{ m('dashboard-table-valuation-heading') }}
+    tbody
+      tr.head-two
+        td {{ m('dashboard-table-valuation-status') }}
+        td {{ m('dashboard-table-valuation-position') }}
+      tr
+        td {{ m('dashboard-table-valuation-today') }}
+        td {{ valuationToday.total }}
+      tr
+        td {{ m('dashboard-table-valuation-outstanding') }}
+        td {{ valuationOutstanding.total }}
+      tr
+        td {{ m('dashboard-table-valuation-total') }}
+        td {{ valuationToday.total + valuationOutstanding.total }}

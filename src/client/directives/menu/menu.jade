@@ -1,0 +1,7 @@
+.menu-dir
+  a(ui-sref='dashboard', ng-class='{selected:state("dashboard")}') {{ m('menu-dashboard') }}
+  a(ui-sref='selling', ng-class='{selected:state("selling")}', ng-show='auth.isAuthorized("selling")') {{ m('menu-selling') }}
+  a(ui-sref='letting', ng-class='{selected:state("letting")}', ng-show='auth.isAuthorized("letting")') {{ m('menu-letting') }}
+  a(ui-sref='valuation', ng-class='{selected:state("valuation")}', ng-show='auth.isAuthorized("valuation")') {{ m('menu-valuation') }}
+  a(ui-sref='lead-new', ng-class='{selected:state("lead-new")}', ng-show='auth.isAuthorized("lead-new")') {{ m('menu-lead-new') }}
+  a(ui-sref='setup', ng-class='{selected:state("setup")}', ng-show='auth.isAuthorized("setup")') {{ m('menu-setup') }}

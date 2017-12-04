@@ -13,3 +13,9 @@ env.bat
 env.sh
 key.pem
 cert.pem
+vitalspace_test.pem
+vitalspace_test.jks
+vitalspace_test.p12
+privateKey.pem
+publicCert.pem
+NOTES.txt
