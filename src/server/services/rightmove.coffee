@@ -99,8 +99,10 @@ module.exports = (ndx) ->
       req = https.request options, (res) ->
         output = ''
         res.on 'data', (data) ->
+          console.log 'data'
           output += data.toString('utf8')
         res.on 'end', ->
+          console.log 'request returned'
           data =
             success: false
           try
