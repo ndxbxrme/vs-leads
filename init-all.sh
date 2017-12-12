@@ -6,7 +6,6 @@ bower install
 grunt build
 #groupadd -r vsleads && useradd -m -r -g vsleads vsleads
 su vsleads -c "echo starting
-[ -z "$ENCRYPTION_KEY" ] && { echo "ENCRYPTION_KEY not set"; exit 1; }
 openssl aes-256-cbc -d -in env-enc.sh -out env.sh -k $ENCRYPTION_KEY
 openssl aes-256-cbc -d -in key-enc.pem -out key.pem -k $ENCRYPTION_KEY
 openssl aes-256-cbc -d -in cert-enc.pem -out cert.pem -k $ENCRYPTION_KEY
