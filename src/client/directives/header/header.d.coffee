@@ -6,4 +6,4 @@ angular.module 'vs-leads'
   templateUrl: 'directives/header/header.html'
   replace: true
   link: (scope, elem, attrs) ->
-    console.log 'header directive'
+    true

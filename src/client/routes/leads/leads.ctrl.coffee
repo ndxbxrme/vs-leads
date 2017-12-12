@@ -7,7 +7,7 @@ angular.module 'vs-leads'
     sort: 'date'
     sortDir: 'DESC'
     page: 1
-    pageSize: 2
+    pageSize: 20
   $scope.allleads = $scope.list 'leads', 
     where: JSON.parse JSON.stringify $stateParams
     page: 1

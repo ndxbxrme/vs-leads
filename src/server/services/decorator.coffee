@@ -6,7 +6,7 @@ module.exports = (ndx) ->
       return cb()
     switch args.table
       when 'leads'
-        args.obj.applicant = "#{args.obj.user.title} #{args.obj.user.first_name} #{args.obj.user.last_name}"
+        args.obj.applicant = "#{args.obj.user.title or ''} #{args.obj.user.first_name or ''} #{args.obj.user.last_name or ''}".trim()
         args.obj.s = "#{args.obj.applicant.toLowerCase()}|#{(args.obj.property?.address || args.obj.user.address).toLowerCase()}|#{(args.obj.property?.postcode || args.obj.user.postcode).toLowerCase()}"
         cb true
       else

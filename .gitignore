@@ -19,3 +19,8 @@ vitalspace_test.p12
 privateKey.pem
 publicCert.pem
 NOTES.txt
+certs/vitalspacelive.jks
+certs/vitalspacelive.p12
+certs/vitalspacelive.pem
+certs/rightmoveKey.pem
+certs/rightmoveCert.pem

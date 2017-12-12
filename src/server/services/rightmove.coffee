@@ -57,7 +57,10 @@ module.exports = (ndx) ->
     getbranchphoneleads:
       date: 'call_date'
   rightmove = ->
-    paths = ['getbranchemails', 'getbranchphoneleads']
+    paths = [
+      'getbranchemails'
+      #'getbranchphoneleads'
+    ]
     doIt = (path, callback) ->
       console.log 'DOING IT', period
       endDate = new Date()
@@ -76,8 +79,8 @@ module.exports = (ndx) ->
         path: "/v1/property/#{path}"
         port: 443
         method: 'POST'
-        key: fs.readFileSync 'privateKey.pem'
-        cert: fs.readFileSync 'publicCert.pem'
+        key: fs.readFileSync 'certs/rightmoveKey.pem'
+        cert: fs.readFileSync 'certs/rightmoveCert.pem'
         passphrase: process.env.RM_SSL_PASS
         headers:
           "Content-Type": "application/json"
@@ -137,5 +140,5 @@ module.exports = (ndx) ->
   ndx.rightmove = rightmove()
   ndx.database.on 'ready', ->
     #ndx.database.delete 'leads'
-    #setInterval ndx.rightmove.fetch, 5 * 60 * 1000
-    #ndx.rightmove.fetch()
+    setInterval ndx.rightmove.fetch, 5 * 60 * 1000
+    ndx.rightmove.fetch()

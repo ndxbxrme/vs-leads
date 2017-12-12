@@ -6,4 +6,4 @@ angular.module 'vs-leads'
   templateUrl: 'directives/footer/footer.html'
   replace: true
   link: (scope, elem, attrs) ->
-    console.log 'footer directive'
+    true

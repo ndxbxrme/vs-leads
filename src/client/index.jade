@@ -9,7 +9,7 @@ html
     header
     menu.mobile-menu
     login
-    .holder(ng-class='{"mobile-menu-out":mobileMenuOut}')
+    .holder(ng-show='auth.loggedIn()', ng-class='{"mobile-menu-out":mobileMenuOut}')
       .body
         .container
           //a.button.twitter(href='/api/google', target='_self') Google

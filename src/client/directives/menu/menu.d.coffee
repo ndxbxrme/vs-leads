@@ -6,4 +6,4 @@ angular.module 'vs-leads'
   templateUrl: 'directives/menu/menu.html'
   replace: true
   link: (scope, elem, attrs) ->
-    console.log 'menu directive'
+    true
