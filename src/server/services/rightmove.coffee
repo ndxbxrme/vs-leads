@@ -74,7 +74,6 @@ module.exports = (ndx) ->
         export_period:
           start_date_time: dateToString startDate, template
           end_date_time: dateToString endDate, template
-      console.log 'making options'
       options =
         hostname: process.env.RM_HOST
         path: "/v1/property/#{path}"
@@ -86,7 +85,6 @@ module.exports = (ndx) ->
         headers:
           "Content-Type": "application/json"
           "Content-Length": Buffer.byteLength body
-      console.log 'options'
       insertLead = (lead, cb) ->
         ndx.database.select 'leads',
           uid: lead.uid
@@ -101,10 +99,8 @@ module.exports = (ndx) ->
       req = https.request options, (res) ->
         output = ''
         res.on 'data', (data) ->
-          console.log 'data'
           output += data.toString('utf8')
         res.on 'end', ->
-          console.log 'request returned'
           data =
             success: false
           try
