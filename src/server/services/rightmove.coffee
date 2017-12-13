@@ -89,7 +89,7 @@ module.exports = (ndx) ->
         headers:
           "Content-Type": "application/json"
           "Content-Length": Buffer.byteLength body
-      console.log 'made em'
+      console.log 'made em', options
       insertLead = (lead, cb) ->
         ndx.database.select 'leads',
           uid: lead.uid
