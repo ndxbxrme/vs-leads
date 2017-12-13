@@ -10,4 +10,5 @@ require 'ndx-server'
   insertField: 'insertedAt'
   insertUserField: 'insertedBy'
   softDelete: true
+  autoRestart: false
 .start()
