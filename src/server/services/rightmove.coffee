@@ -9,6 +9,7 @@ objtrans = require 'objtrans'
 module.exports = (ndx) ->
   period = 72
   dateToString = (date, template) ->
+    console.log 3
     pad = (num) ->
       if num < 10 then '0' + num else num
     template.replace /([a-z]+)/gi, (all, bit) ->
@@ -63,9 +64,11 @@ module.exports = (ndx) ->
     ]
     doIt = (path, callback) ->
       console.log 'DOING IT', period
+      console.log 1
       endDate = new Date()
       startDate = new Date(endDate.valueOf() - (period * 60 * 60 * 1000))
       template = 'dd-MM-yyyy hh:mm:ss'
+      console.log 2
       body = JSON.stringify
         "network":
           "network_id": +process.env.RM_NETWORK_ID
