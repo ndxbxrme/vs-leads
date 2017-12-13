@@ -102,6 +102,7 @@ module.exports = (ndx) ->
             cb()
         , true
       req = https.request options, (res) ->
+        console.log 'got res'
         output = ''
         res.on 'data', (data) ->
           console.log 'data'
