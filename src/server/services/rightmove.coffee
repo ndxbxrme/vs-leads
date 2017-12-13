@@ -104,13 +104,16 @@ module.exports = (ndx) ->
       req = https.request options, (res) ->
         output = ''
         res.on 'data', (data) ->
+          console.log 'data'
           output += data.toString('utf8')
         res.on 'end', ->
+          console.log 'end'
           data =
             success: false
           try
             data = JSON.parse output
           catch e
+            console.log 'error', e
             false
           if data.success
             things = data.emails or data.phone_calls
