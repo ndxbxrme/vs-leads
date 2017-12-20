@@ -49,8 +49,8 @@ rightmove = ->
       path: "/v1/property/#{path}"
       port: 443
       method: 'POST'
-      key: fs.readFileSync 'certs/rightmoveKey.pem'
-      cert: fs.readFileSync 'certs/rightmoveCert.pem'
+      key: fs.readFileSync 'certs/rightmove.key'
+      cert: fs.readFileSync 'certs/rightmove.crt'
       passphrase: process.env.RM_SSL_PASS
       headers:
         "Content-Type": "application/json"
