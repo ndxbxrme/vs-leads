@@ -24,3 +24,5 @@ certs/vitalspacelive.p12
 certs/vitalspacelive.pem
 certs/rightmoveKey.pem
 certs/rightmoveCert.pem
+certs/rightmove.key
+certs/rightmove.crt
