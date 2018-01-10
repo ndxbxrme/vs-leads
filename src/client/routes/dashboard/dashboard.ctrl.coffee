@@ -9,8 +9,8 @@ angular.module 'vs-leads'
         start = new Date(new Date().setDate(end.getDate() - 1))
         args.where =
           date:
-            $gte: start
-            $lte: end
+            $gte: start.valueOf()
+            $lte: end.valueOf()
           roleType: 'Selling'
       page: 1
       pageSize: 0
@@ -20,7 +20,7 @@ angular.module 'vs-leads'
         end = new Date(new Date().setDate(now.getDate() - 1))
         args.where =
           date:
-            $lte: end
+            $lte: end.valueOf()
           roleType: 'Selling'
           booked: null
       page: 1
@@ -31,8 +31,8 @@ angular.module 'vs-leads'
         start = new Date(new Date().setDate(end.getDate() - 1))
         args.where =
           date:
-            $gte: start
-            $lte: end
+            $gte: start.valueOf()
+            $lte: end.valueOf()
           roleType: 'Letting'
       page: 1
       pageSize: 0
@@ -42,7 +42,7 @@ angular.module 'vs-leads'
         end = new Date(new Date().setDate(now.getDate() - 1))
         args.where =
           date:
-            $lte: end
+            $lte: end.valueOf()
           roleType: 'Letting'
           booked: null
       page: 1
@@ -53,8 +53,8 @@ angular.module 'vs-leads'
         start = new Date(new Date().setDate(end.getDate() - 1))
         args.where =
           date:
-            $gte: start
-            $lte: end
+            $gte: start.valueOf()
+            $lte: end.valueOf()
           roleType: 'Valuation'
       page: 1
       pageSize: 0
@@ -64,7 +64,7 @@ angular.module 'vs-leads'
         end = new Date(new Date().setDate(now.getDate() - 1))
         args.where =
           date:
-            $lte: end
+            $lte: end.valueOf()
           roleType: 'Valuation'
           booked: null
       page: 1

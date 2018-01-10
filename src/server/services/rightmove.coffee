@@ -32,7 +32,7 @@ module.exports = (ndx) ->
           date = new Date()
           input.email_date.replace /^(\d+)-(\d+)-(\d+) (\d+):(\d+):(\d+)$/, (all, dd, MM, yyyy, hh, mm, ss) ->
             date = new Date("#{yyyy}-#{MM}-#{dd} #{hh}:#{mm}:#{ss}")
-          return date
+          return date.valueOf()
       uid: (input) ->
         'rm' + input.email_id
       email: 'from_address'
@@ -111,6 +111,8 @@ module.exports = (ndx) ->
             things = data.emails or data.phone_calls
             if things
               async.each things, (item, itemCallback) ->
+                if item.date
+                  item.date = new Date(item.date).valueOf()
                 if item.property?.agent_ref
                   ndx.dezrez.get 'role/{id}', null, id:item.property.agent_ref, (err, body) ->
                     item.roleType = body.RoleType.SystemName
