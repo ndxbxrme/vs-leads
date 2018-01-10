@@ -139,6 +139,6 @@ module.exports = (ndx) ->
             period = 0.3
   ndx.rightmove = rightmove()
   ndx.database.on 'ready', ->
-    #ndx.database.delete 'leads'
-    #setInterval ndx.rightmove.fetch, 5 * 60 * 1000
-    #ndx.rightmove.fetch()
+    ndx.database.delete 'leads'
+    setInterval ndx.rightmove.fetch, 5 * 60 * 1000
+    ndx.rightmove.fetch()
