@@ -2,3 +2,7 @@
 .leads-route
   .search-box
     width 23rem
+  .options
+    width 1%
+  .row
+    justify-content space-between

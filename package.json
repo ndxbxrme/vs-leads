@@ -1,6 +1,6 @@
 {
   "name": "vs-leads",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "",
   "main": "server/app.js",
   "scripts": {
@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "async": "^2.6.0",
+    "crypto-js": "^3.1.9-1",
     "googleapis": "^23.0.0",
     "ndx-auth": "^0.1.11",
     "ndx-connect": "0.0.6",
