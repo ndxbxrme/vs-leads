@@ -4,3 +4,6 @@
     display flex
   .details
     flex 1
+  .comment
+    p
+      white-space pre

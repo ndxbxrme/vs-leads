@@ -6,7 +6,7 @@ module.exports = (ndx) ->
     clientID: process.env.GAPI_ID
     clientSecret: process.env.GAPI_SECRET
     callbackURL: process.env.GAPI_CB_URL
-  console.log 'OPTIONS', options
+  #console.log 'OPTIONS', options
   ndx.passport.use new GoogleStrategy options, (accessToken, refreshToken, profile, done) ->
     user =
       profile: profile
@@ -19,6 +19,6 @@ module.exports = (ndx) ->
     accessType: 'offline'
   authed = (res, req) ->
     console.log 'authed', req.user
-  console.log ndx.passport.authenticate('google', scope)
+  #console.log ndx.passport.authenticate('google', scope)
   ndx.app.get '/api/google', ndx.passport.authenticate('google', scope)
   ndx.app.get '/api/google/callback', ndx.passport.authenticate('google', {failureRedirect:'/'}), authed
