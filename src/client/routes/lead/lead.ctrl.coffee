@@ -19,6 +19,9 @@ angular.module 'vs-leads'
     ,
       name: 'Walk In'
       _id: 'walkin'
+    ,
+      name: 'OnTheMarket'
+      _id: 'onthemarket'
     ]
   $scope.selling = $scope.list
     route: "#{env.PROPERTY_URL}/search"

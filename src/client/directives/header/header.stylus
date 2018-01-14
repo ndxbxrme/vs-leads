@@ -17,61 +17,62 @@
     height 72px
     width 90%
     max-width 1100px
-    .branding
-      flex 1
+   a
+    color white
+    &.logo
       img
         width 195px
-    .main-menu 
-      flex 1
-      ul.menu
-        display flex
-        margin 0
-        padding 0
-        list-style-type none
-        li
-          margin-left 4rem
+  .main-menu 
+    flex 1
+    ul.menu
+      display flex
+      margin 0
+      padding 0
+      list-style-type none
+      li
+        margin-left 4rem
+        a
+          color white
+          text-transform uppercase
+          margin 0
+        &.selected
           a
-            color white
-            text-transform uppercase
-          &.selected
-            a
-              text-decoration underline
-    .user
-      text-align right
-      a
-        color #fff
-        img 
-          width 10px
-    .lines-btn
+            text-decoration underline
+  .user
+    text-align right
+    a
+      color #fff
+      img 
+        width 10px
+  .lines-btn
+    display inline-block
+    width 3rem
+    height 3rem
+    border none
+    background none
+    cursor pointer
+    outline none
+    user-select none
+    .lines
       display inline-block
       width 3rem
-      height 3rem
-      border none
-      background none
-      cursor pointer
-      outline none
-      user-select none
-      .lines
+      height 0.37rem
+      background #f1f1f1
+      border-radius 0.28rem
+      position relative
+      &:before, &:after
         display inline-block
         width 3rem
         height 0.37rem
         background #f1f1f1
         border-radius 0.28rem
-        position relative
-        &:before, &:after
-          display inline-block
-          width 3rem
-          height 0.37rem
-          background #f1f1f1
-          border-radius 0.28rem
-          position absolute
-          left 0
-          content ''
-          transform-origin 0.28rem center
-        &:before
-          top .8rem
-        &:after
-          top -.8rem
+        position absolute
+        left 0
+        content ''
+        transform-origin 0.28rem center
+      &:before
+        top .8rem
+      &:after
+        top -.8rem
 .mobile #click-me
   margin-right 0.5rem
-      

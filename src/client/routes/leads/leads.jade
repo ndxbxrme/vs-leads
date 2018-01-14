@@ -1,7 +1,8 @@
 .leads-route
   .row
     h1 {{m('leads-' + roleType + '-heading')}}
-    button.btn(ui-sref='lead-new', ng-show='auth.isAuthorized("lead-new")') {{m('leads-button-add')}}
+    button.btn.orangebtn(ui-sref='lead-new', ng-show='auth.isAuthorized("lead-new")') {{m('leads-button-add')}}
+      i.fa.fa-plus
   .controls.row
     .left
       .sort Order By:
@@ -28,7 +29,8 @@
       tr
         td.source
           label {{ m('leads-table-source') }}
-          span {{ lead.source }}  {{ lead.method }}
+          span(class='{{ lead.source }}')
+          span {{ lead.method }}
         td.address
           label {{ m('leads-table-address') }}
           span {{ lead.property.address || lead.user.address}}, {{ lead.property.postcode || lead.user.postcode}}, {{ lead.price | currency:'£'}}

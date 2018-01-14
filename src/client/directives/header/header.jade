@@ -1,6 +1,8 @@
 .header-dir
   .container
-    .logo Logo
+    .logo
+      a.logo(href="/")
+        img.logo(src="public/img/VitalSpaceLogo-2016.svg")
     menu.main-menu.mobile-hide
     .user.mobile-hide
       a(ui-sref='profile') {{auth.getUser().displayName || auth.getUser().local.email}} 
