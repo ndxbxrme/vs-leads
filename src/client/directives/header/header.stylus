@@ -30,7 +30,7 @@
       padding 0
       list-style-type none
       li
-        margin-left 4rem
+        margin-left 2rem
         a
           color white
           text-transform uppercase

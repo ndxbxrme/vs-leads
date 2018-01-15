@@ -36,7 +36,7 @@
     "ndx-codemirror": "^0.0.8",
     "angular-gravatar": "^0.4.2",
     "ndx-markdown": "^0.0.4",
-    "ndx-rest": "^0.2.11",
-    "components-font-awesome": "^4.7.0"
+    "components-font-awesome": "^4.7.0",
+    "ndx-rest": "^0.2.13"
   }
 }

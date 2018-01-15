@@ -6,4 +6,4 @@
     flex 1
   .comment
     p
-      white-space pre
+      white-space pre-wrap

@@ -9,6 +9,8 @@
     li
       a(ui-sref='valuation', ng-class='{selected:state("valuation")}', ng-show='auth.isAuthorized("valuation")') {{ m('menu-valuation') }}
     li
+      a(ui-sref='history', ng-class='{selected:state("history")}', ng-show='auth.isAuthorized("history")') {{ m('menu-history') }}
+    li
       a(ui-sref='lead-new', ng-class='{selected:state("lead-new")}', ng-show='auth.isAuthorized("lead-new")') {{ m('menu-lead-new') }}
     li
       a(ui-sref='setup', ng-class='{selected:state("setup")}', ng-show='auth.isAuthorized("setup")') {{ m('menu-setup') }}

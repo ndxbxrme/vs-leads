@@ -108,11 +108,13 @@ body
       border-radius 5px
       border 1px solid vs-lightgrey
       font-size 1.6rem
+  .sorting
+    text-decoration underline
 .desktop-hide
   display none!important
 .small-mobile-show
   display none!important
-@media screen and (max-width: 992px)
+@media screen and (max-width: 80rem)
   .mobile-hide
     display none
   .desktop-hide

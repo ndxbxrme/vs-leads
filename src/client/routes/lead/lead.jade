@@ -70,8 +70,9 @@ include ../../mixins/form.jade
           h3 {{ m('lead-comments-heading') }}
           p {{ lead.item.comments }}
         .controls
-          button.btn.delete(type='button', ng-click='deleteLead()') {{ m('lead-delete-button') }}
-          button.btn.booking(type='button', ng-click='bookLead()') {{ m('lead-booking-button') }}
+          button.btn.delete(type='button', ng-click='deleteLead()', ng-hide='lead.item.deleted || lead.item.booked') {{ m('lead-delete-button') }}
+          button.btn.booking(type='button', ng-click='bookLead()', ng-hide='lead.item.deleted || lead.item.booked') {{ m('lead-booking-button') }}
+          button.btn.restore(type='button', ng-click='restore()', ng-show='lead.item.deleted || lead.item.booked') {{ m('lead-restore-button') }}
     .case-notes
       h2.orange {{ m('lead-notes-heading') }}
       .case-note(ng-repeat='note in notesData = ( getNotes() | orderBy:"-date" ) | limitTo:notesLimit:notesLimit*(notesPage-1)')
@@ -85,6 +86,6 @@ include ../../mixins/form.jade
             span(ng-show='note.side') - {{note.side}}
             .note-body(ng-bind-html='note.text | markdown:true')
       pagination.pagination-sm.pagination(total='notesData.length', ng-model='notesPage', page-size='notesLimit')
-      .add-note
+      .add-note(ng-hide='lead.item.deleted')
           code-mirror(ng-model='note.text', options='{mode:markdown, lineWrapping:true}')
           button(ng-click='addNote()') {{note.date?'Update':'Add'}} Note

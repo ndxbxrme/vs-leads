@@ -1,0 +1,59 @@
+.history-route
+  .row
+    .left
+      h1 {{m('history-heading')}}
+    .right
+      .radios
+        .radio
+          input#rts(type='radio', name='roleType', ng-model='history.args.where.roleType', value='Selling')
+          label(for='rts') Selling
+        .radio
+          input#rtl(type='radio', name='roleType', ng-model='history.args.where.roleType', value='Letting')
+          label(for='rtl') Letting
+        .radio
+          input#rtv(type='radio', name='roleType', ng-model='history.args.where.roleType', value='Valuation')
+          label(for='rtv') Valuation
+  .controls.row
+    .left
+      .sort Order By:
+        a.order-item(href='', ng-click='sort.set("modifiedAt")', ng-class='sort.class("modifiedAt")') Last Updated
+        a.order-item(href='', ng-click='sort.set("date")', ng-class='sort.class("date")') Enquiry Date
+    .right
+      .search-box
+        input(type='text', ng-model='history.args.where.s.$like')
+        .total Showing {{history.total}} of {{allhistory.total}} leads
+  table.list-table(ng-show='history.total')
+    thead
+      tr
+        th.address
+          span {{ m('history-table-address') }}
+        th.applicant
+          span {{ m('history-table-applicant') }}
+        th.date
+          span {{ m('history-table-date') }}
+        th.status
+          span {{ m('history-table-status') }}
+        th.view
+          span {{ m('history-table-view') }}
+        th.restore
+          span {{ m('history-table-restore') }}
+    tbody(ng-repeat='lead in history.items')
+      tr
+        td.address
+          label {{ m('history-table-address') }}
+          span {{ lead.property.address || lead.user.address}}, {{ lead.property.postcode || lead.user.postcode}}, {{ lead.price | currency:'£'}}
+        td.applicant
+          label {{ m('history-table-applicant') }}
+          span {{lead.applicant}}
+        td.date
+          label {{ m('history-table-date') }}
+          span {{lead.date | date:'medium'}}
+        td.status
+          label {{ m('history-table-status') }}
+          span {{lead.deleted ? 'Deleted': 'Booked'}}
+        td.view
+          a(ui-sref='leadDeleted({_id: lead._id})') {{ m('history-table-view') }}
+        td.restore
+          a(href='', ng-click='restore(lead)') {{ m('history-table-restore') }}
+  p(ng-show='history.items && !history.total') {{ m('history-message-no-items') }}
+  paging(total='history.total', opts='history.args')

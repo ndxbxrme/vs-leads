@@ -1,6 +1,6 @@
 {
   "name": "vs-leads",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "",
   "main": "server/app.js",
   "scripts": {
@@ -46,14 +46,13 @@
     "ndx-modified": "^0.1.2",
     "ndx-passport": "^0.5.4",
     "ndx-permissions": "^0.3.4",
-    "ndx-rest": "^0.5.5",
-    "ndx-server": "^0.13.24",
+    "ndx-rest": "^0.5.6",
+    "ndx-server": "^0.13.26",
     "ndx-short-token": "0.0.6",
-    "ndx-socket": "0.0.11",
+    "ndx-socket": "0.0.14",
     "ndx-static-routes": "0.0.13",
     "ndx-superadmin": "^0.1.6",
     "ndx-user-roles": "^0.4.0",
-    "ndxdb": "^1.8.14",
     "objtrans": "0.0.14",
     "passport-google-oauth": "^1.0.0",
     "superagent": "^3.8.1"

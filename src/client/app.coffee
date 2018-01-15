@@ -13,8 +13,15 @@ angular.module 'vs-leads', [
     size: 16
     "default": 'mm'
     rating: 'pg'
-.run ($http, env) ->
+.run ($http, env, $rootScope, $state) ->
   $http.defaults.headers.common.Authorization = "Bearer #{env.PROPERTY_TOKEN}"
+  $rootScope.state = (route) ->
+    if $state and $state.current
+      if Object.prototype.toString.call(route) is '[object Array]'
+        return route.indexOf($state.current.name) isnt -1
+      else
+        return route is $state.current.name
+    false
 try
   angular.module 'ndx'
 catch e

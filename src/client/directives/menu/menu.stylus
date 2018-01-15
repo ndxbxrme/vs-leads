@@ -5,11 +5,10 @@
     margin-left 4rem
     a
       padding .61rem 0
-      margin 0 .82rem
       color vs-white
       &.selected
         color vs-link
-        border-bottom 3px solid vs-link
+        border-bottom 3px solid vs-white
     .log-out
       display none
   &.mobile-menu
@@ -20,6 +19,9 @@
     opacity 1
     ul
       flex-direction column
+      list-style-type none
+      margin 0
+      padding 0
     a
       background vs-white
       font-size 1.6rem

@@ -93,6 +93,10 @@ angular.module 'vs-leads'
         $scope.lead.item.notes.remove mynote
     if $scope.lead.item._id
       $scope.lead.save()
+  $scope.restore = ->
+    $http.post "/api/leads/#{$scope.lead.item._id}",
+      deleted: null
+      booked: null
   $scope.saveFn = (cb) ->
     if $scope.selectedProperty and $scope.lead.item.roleType isnt 'Valuation'
       for property in $scope[$scope.lead.item.roleType.toLowerCase()].items

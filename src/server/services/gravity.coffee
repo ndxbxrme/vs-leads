@@ -95,7 +95,7 @@ module.exports = (ndx) ->
     superagent.get "http://vitalspace.co.uk/gravityformsapi/forms/#{formNo}/entries?api_key=#{publicKey}&signature=#{sig}&expires=#{future_unixtime}"
     .end (err, res) ->
       if err
-        console.log err
+        #console.log err
         gravityCb()
       else
         if res.body.response and res.body.response.entries
@@ -123,7 +123,7 @@ module.exports = (ndx) ->
     fetch: ->
       doGravity 7, ->
         doGravity 3, ->
-        console.log 'gravity done'
+        #console.log 'gravity done'
   ndx.database.on 'ready', ->
     #ndx.database.delete 'leads'
     setInterval ndx.gravity.fetch, 5 * 60 * 1000

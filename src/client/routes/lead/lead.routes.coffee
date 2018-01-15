@@ -18,3 +18,13 @@ angular.module 'vs-leads'
     data:
       title: 'lead'
       auth: ['superadmin', 'admin', 'agency']
+  $stateProvider.state 'leadDeleted',
+    url: '/lead/:_id/all'
+    templateUrl: 'routes/lead/lead.html'
+    controller: 'LeadCtrl'
+    params:
+      deleted:
+        $nn: true
+    data:
+      title: 'lead'
+      auth: ['superadmin', 'admin']

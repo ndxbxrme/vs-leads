@@ -62,7 +62,7 @@ module.exports = (ndx) ->
       #'getbranchphoneleads'
     ]
     doIt = (path, callback) ->
-      console.log 'DOING IT', period
+      #console.log 'DOING IT', period
       endDate = new Date()
       startDate = new Date(endDate.valueOf() - (period * 60 * 60 * 1000))
       template = 'dd-MM-yyyy hh:mm:ss'
@@ -105,7 +105,7 @@ module.exports = (ndx) ->
           try
             data = JSON.parse output
           catch e
-            console.log 'error', e
+            #console.log 'error', e
             false
           if data.success
             things = data.emails or data.phone_calls
@@ -141,6 +141,6 @@ module.exports = (ndx) ->
             period = 0.3
   ndx.rightmove = rightmove()
   ndx.database.on 'ready', ->
-    #ndx.database.delete 'leads'
+    ndx.database.delete 'leads'
     setInterval ndx.rightmove.fetch, 5 * 60 * 1000
     ndx.rightmove.fetch() 
