@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'vs-leads'
-.controller 'LeadCtrl', ($scope, $stateParams, env, Auth, Confirmer) ->
+.controller 'LeadCtrl', ($scope, $http, $stateParams, env, Auth, Confirmer) ->
   $scope.selectedProperty = null
   $scope.lead = $scope.single 'leads', $stateParams, (lead) ->
     if JSON.stringify(lead.item) is '{}'
