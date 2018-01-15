@@ -53,9 +53,9 @@ include ../../mixins/form.jade
         .price {{ lead.item.price | currency:'£'}}
     .row
       hr
-    .form-row
-      .form-label
-        .source {{ lead.item.source}} {{ lead.item.method }}
+    .form-row.lead-info
+      .form-label.no-padding
+        .source(class='{{ lead.item.source}}')
         h3 {{ m('lead-contact-details-heading') }}
         .name {{ lead.item.applicant }}
         a.email(href='mailto:{{ lead.item.email }}') {{ lead.item.email }}
@@ -65,7 +65,8 @@ include ../../mixins/form.jade
           .left
             .date {{ lead.item.date | date:'mediumDate' }}
           .right
-            button.btn(ng-click='editing=true') Edit
+            a(ng-click='editing=true')
+              img(src='public/img/icons/edit-icon.jpg' width='30' height='auto')
         .comment
           h3 {{ m('lead-comments-heading') }}
           p {{ lead.item.comments }}

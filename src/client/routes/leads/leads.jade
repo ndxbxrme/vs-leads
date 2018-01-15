@@ -30,10 +30,9 @@
         td.source
           label {{ m('leads-table-source') }}
           span(class='{{ lead.source }}')
-          span {{ lead.method }}
         td.address
           label {{ m('leads-table-address') }}
-          span {{ lead.property.address || lead.user.address}}, {{ lead.property.postcode || lead.user.postcode}}, {{ lead.price | currency:'£'}}
+          a(ui-sref='lead({_id:lead._id})') {{ lead.property.address || lead.user.address}}, {{ lead.property.postcode || lead.user.postcode}}, {{ lead.price | currency:'£'}}
         td.applicant
           label {{ m('leads-table-applicant') }}
           span {{lead.applicant}}

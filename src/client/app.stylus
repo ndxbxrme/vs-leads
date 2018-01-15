@@ -110,6 +110,16 @@ body
       font-size 1.6rem
   .sorting
     text-decoration underline
+.confirm-backdrop.open .confirm-box 
+  padding 20px 40px 40px 40px
+  border 1px solid vs-orange
+  h1
+    width 100%
+    text-align center
+    border-bottom 1px solid vs-lightgrey
+    padding-bottom 10px
+  .message
+    margin-bottom 20px
 .desktop-hide
   display none!important
 .small-mobile-show

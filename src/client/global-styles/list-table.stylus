@@ -3,7 +3,7 @@
   width 100%
   border-collapse collapse
   th, td
-    padding 1.02rem
+    padding 1.8rem
     border-bottom .1rem solid #e0e1e1
     overflow hidden
     text-overflow ellipsis
