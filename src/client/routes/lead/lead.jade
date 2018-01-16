@@ -65,7 +65,7 @@ include ../../mixins/form.jade
           .left
             .date {{ lead.item.date | date:'mediumDate' }}
           .right
-            a(ng-click='editing=true')
+            a(ng-click='editing=true', ng-hide='lead.item.deleted || lead.item.booked')
               img(src='public/img/icons/edit-icon.jpg' width='30' height='auto')
         .comment
           h3 {{ m('lead-comments-heading') }}
