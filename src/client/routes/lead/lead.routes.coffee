@@ -23,8 +23,10 @@ angular.module 'vs-leads'
     templateUrl: 'routes/lead/lead.html'
     controller: 'LeadCtrl'
     params:
-      deleted:
-        $nn: true
+      $or:
+        deleted:
+          $nn: true
+        booked: true
     data:
       title: 'lead'
       auth: ['superadmin', 'admin']

@@ -97,6 +97,7 @@ angular.module 'vs-leads'
     $http.post "/api/leads/#{$scope.lead.item._id}",
       deleted: null
       booked: null
+    Auth.goToLast('selling')
   $scope.saveFn = (cb) ->
     if $scope.selectedProperty and $scope.lead.item.roleType isnt 'Valuation'
       for property in $scope[$scope.lead.item.roleType.toLowerCase()].items
