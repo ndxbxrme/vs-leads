@@ -2,6 +2,10 @@
 .list-table
   width 100%
   border-collapse collapse
+  .view, .restore, .status, .date
+    text-align center
+  .address, .applicant
+    text-align left
   th, td
     padding 1.8rem
     border-bottom .1rem solid #e0e1e1
@@ -81,6 +85,11 @@
         
   @media screen and (max-width: 47rem)
     display block
+    .status, .date
+      text-align left
+    thead
+      th
+        display none
     tbody
       display block
       tr
@@ -89,8 +98,6 @@
         flex-direction column
         border-right .1rem solid #e0e1e1
         border-top .1rem solid #e0e1e1
-        th
-          display none
         td
           display table-row
           width 100%
@@ -99,7 +106,7 @@
             border-right none!important
           &.options
             width 100%
-            text-align right
+            text-align center
             label
               display none
           label
@@ -110,3 +117,5 @@
           span
             display table-cell
             vertical-align top
+          a
+            display table-cell
