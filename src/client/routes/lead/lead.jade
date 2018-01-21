@@ -55,7 +55,7 @@ include ../../mixins/form.jade
       hr
     .form-row.lead-info
       .form-label.no-padding
-        .source(class='{{ lead.item.source}}')
+        .source(class='{{lead.item.source}} {{lead.item.method}}')
         h3 {{ m('lead-contact-details-heading') }}
         .name {{ lead.item.applicant }}
         a.email(href='mailto:{{ lead.item.email }}') {{ lead.item.email }}

@@ -37,6 +37,30 @@
     &.gravity
       background url(../../public/img/VitalSpaceLogo-2016-orange.svg) center no-repeat
       background-size 170px 50px
+    &.local.onthemarket
+      background url(../../public/img/otm-logo.png) center no-repeat
+      background-size 180px 40px
+    &.local.telephone
+      background url(../../public/img/icons/vs_icons.png) no-repeat
+      background-position -256px -168px
+      width 80px
+      height 80px
+      display block
+      zoom .6
+    &.local.email
+      background url(../../public/img/icons/vs_icons.png) no-repeat
+      background-position -172px -420px
+      width 80px
+      height 80px
+      display block
+      zoom .6
+    &.local.walkin
+      background url(../../public/img/icons/vs_icons.png) no-repeat
+      background-position -256px -336px
+      width 80px
+      height 80px
+      display block
+      zoom .6
   .controls
     float right
   .case-notes
