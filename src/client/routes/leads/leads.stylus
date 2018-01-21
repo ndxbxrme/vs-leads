@@ -53,6 +53,37 @@
         height 30px
         display block
         margin 0 auto
+      .onthemarket
+        background url(../../public/img/otm-logo.png) center no-repeat
+        background-size 120px 30px
+        width 120px
+        height 30px
+        display block
+        margin 0 auto
+      .local.telephone
+        background url(../../public/img/icons/vs_icons.png) no-repeat
+        background-position -256px -168px
+        width 80px
+        height 80px
+        display block
+        margin 0 auto
+        zoom .4
+      .local.email
+        background url(../../public/img/icons/vs_icons.png) no-repeat
+        background-position -172px -420px
+        width 80px
+        height 80px
+        display block
+        margin 0 auto
+        zoom .4
+      .local.walkin
+        background url(../../public/img/icons/vs_icons.png) no-repeat
+        background-position -256px -336px
+        width 80px
+        height 80px
+        display block
+        margin 0 auto
+        zoom .4
       @media screen and (max-width:47rem)
         .rightmove, .gravity
           display table-cell

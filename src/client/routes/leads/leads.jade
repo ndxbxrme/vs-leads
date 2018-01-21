@@ -29,7 +29,7 @@
       tr
         td.source
           label {{ m('leads-table-source') }}
-          span(class='{{ lead.source }}')
+          span(class='{{ lead.source }} {{lead.method}}')
         td.address
           label {{ m('leads-table-address') }}
           a(ui-sref='lead({_id:lead._id})') {{ lead.property.address || lead.user.address}}, {{ lead.property.postcode || lead.user.postcode}}, {{ lead.price | currency:'£'}}
