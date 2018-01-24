@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'vs-leads'
-.controller 'SetupCtrl', ($scope) ->
+.controller 'SetupCtrl', ($scope, $http, alert) ->
   $scope.users = $scope.list 'users'
   $scope.emailTemplates = $scope.list 'emailtemplates'
   $scope.addUser = ->

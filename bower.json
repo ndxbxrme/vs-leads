@@ -21,7 +21,6 @@
     "angular": "^1.6.7",
     "angular-touch": "^1.6.7",
     "angular-ui-router": "^1.0.11",
-    "ndx-auth": "^0.3.8",
     "ndx-array-extras": "^0.0.4",
     "ndx-scroll-top": "^0.0.11",
     "ndx-socket": "^0.0.6",
@@ -37,6 +36,7 @@
     "angular-gravatar": "^0.4.2",
     "ndx-markdown": "^0.0.4",
     "components-font-awesome": "^4.7.0",
-    "ndx-rest": "^0.2.13"
+    "ndx-rest": "^0.2.13",
+    "ndx-auth": "^0.3.13"
   }
 }

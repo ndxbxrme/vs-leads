@@ -21,6 +21,7 @@ angular.module 'vs-leads'
     "menu-history": 'Historic'
     "menu-lead-new": 'Add a Lead'
     "menu-setup": 'Setup'
+    "menu-logout": 'Log out'
     #dashboard
     "dashboard-heading": 'Dashboard'
     "dashboard-table-selling-heading": 'Sales Leads'

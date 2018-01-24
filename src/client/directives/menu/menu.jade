@@ -14,3 +14,5 @@
       a(ui-sref='lead-new', ng-class='{selected:state("lead-new")}', ng-show='auth.isAuthorized("lead-new")') {{ m('menu-lead-new') }}
     li
       a(ui-sref='setup', ng-class='{selected:state("setup")}', ng-show='auth.isAuthorized("setup")') {{ m('menu-setup') }}
+    li
+      a.log-out(href='/api/logout', target='_self') {{ m('menu-logout') }}

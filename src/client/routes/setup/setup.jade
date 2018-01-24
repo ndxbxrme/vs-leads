@@ -19,7 +19,7 @@
           span {{user.displayName || user.local.email}}
       .add-user
         h3 Invite user
-        form(name='addUserForm', ng-submit='addUser()')
+        form(name='addUserForm', ng-submit='addUser()', ignore='true')
           .row
             input(type='email', ng-model='newUser.local.email', placeholder='Email address')
             select(ng-model='newUser.role')

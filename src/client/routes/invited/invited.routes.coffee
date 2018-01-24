@@ -3,6 +3,6 @@
 angular.module 'vs-leads'
 .config ($stateProvider) ->
   $stateProvider.state 'invited',
-    url: '/invited'
+    url: '/invite/:code'
     templateUrl: 'routes/invited/invited.html'
     controller: 'InvitedCtrl'
