@@ -6,7 +6,7 @@ angular.module 'vs-leads', [
   'ng-sumoselect'
   'ui.gravatar'
 ]
-.config ($locationProvider, $urlRouterProvider, gravatarServiceProvider) ->
+.config ($locationProvider, $urlRouterProvider, gravatarServiceProvider, $httpProvider, AuthProvider) ->
   $urlRouterProvider.otherwise '/'
   $locationProvider.html5Mode true
   gravatarServiceProvider.defaults =

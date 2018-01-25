@@ -37,6 +37,6 @@
     "ndx-markdown": "^0.0.4",
     "components-font-awesome": "^4.7.0",
     "ndx-rest": "^0.2.13",
-    "ndx-auth": "^0.3.13"
+    "ndx-auth": "^0.3.14"
   }
 }
