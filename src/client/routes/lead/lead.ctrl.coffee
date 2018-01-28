@@ -3,6 +3,7 @@
 angular.module 'vs-leads'
 .controller 'LeadCtrl', ($scope, $http, $stateParams, env, Auth, Confirmer) ->
   $scope.selectedProperty = null
+  $scope.defaultLast = 'leads'
   $scope.lead = $scope.single 'leads', $stateParams, (lead) ->
     if JSON.stringify(lead.item) is '{}'
       $scope.editing = true

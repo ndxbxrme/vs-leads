@@ -5,6 +5,7 @@ angular.module 'vs-leads', [
   'ui.router'
   'ng-sumoselect'
   'ui.gravatar'
+  'multi-check'
 ]
 .config ($locationProvider, $urlRouterProvider, gravatarServiceProvider, $httpProvider, AuthProvider) ->
   $urlRouterProvider.otherwise '/'

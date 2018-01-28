@@ -99,6 +99,16 @@ angular.module 'vs-leads'
     "history-message-no-items": 'No leads to show'
     #setup
     "setup-heading": 'Setup'
+    #email template
+    "template-name-label": 'Name'
+    "template-name-error-required": 'Please enter a name'
+    "template-subject-label": 'Action'
+    "template-subject-error-required": 'Please enter a subject'
+    "template-from-label": 'Action'
+    "template-from-error-required": 'Please enter a from email address'
+    "template-from-error-email": 'Please enter a valid email address'
+    "template-action-label": 'Action'
+    "template-action-error-required": 'Please select an action'
 
   fillTemplate = (template, data) -> 
     template.replace /\{\{(.+?)\}\}/g, (all, match) ->

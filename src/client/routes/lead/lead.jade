@@ -1,7 +1,7 @@
 include ../../mixins/form.jade
 .lead-route
   +form({data:'lead'}).panel(ng-show='editing')
-    .row.heading
+    .row.heading 
       .left
         h1(ng-show='lead.item && !lead.item._id') {{m('lead-heading-adding')}}
         h1(ng-show='lead.item && lead.item._id') {{m('lead-heading-editing', lead.item)}}

@@ -25,7 +25,7 @@ mixin input(args)
   - var myclass = args.name + ' ' + (args.errors.required?'required':'') + ' ' + (args.nolabel?'no-label':'') + ' ' + (args.icon?'has-icon':'')
   .form-item.c-input(class=myclass, ng-class="{warning: submitted #{'&&'} #{formName}.#{args.name}.$invalid}", ng-if=args.if)
     - if(!args.nolabel)
-      label.label {{ m('#{args.prefix}-#{args.name}-label') }} {{ #{args.if} }}
+      label.label {{ m('#{args.prefix}-#{args.name}-label') }}
     - if(args.icon)
       i.icon(class=args.icon)
     input(type=args.type, name=args.name, ng-model=args.model, placeholder="{{ m('#{args.prefix}-#{args.name}-placeholder') }}", title="{{ m('#{args.prefix}-#{args.name}-label') }}", ng-disabled='disabled', tabindex=args.tab)&attributes(args.errors)&attributes(attributes)
