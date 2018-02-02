@@ -115,7 +115,7 @@ module.exports = (ndx) ->
                   item.date = new Date(item.date).valueOf()
                 if item.property?.agent_ref
                   ndx.dezrez.get 'role/{id}', null, id:item.property.agent_ref, (err, body) ->
-                    item.roleType = body.RoleType.SystemName
+                    item.roleType = body.RoleType?.SystemName or 'Selling'
                     item.roleId = +item.property.agent_ref
                     item.propertyId = body.PropertyId
                     item.price = body.Price?.PriceValue
