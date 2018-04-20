@@ -115,13 +115,14 @@ module.exports = (ndx) ->
                   item.date = new Date(item.date).valueOf()
                 if item.property?.agent_ref
                   ndx.dezrez.get 'role/{id}', null, id:item.property.agent_ref, (err, body) ->
-                    item.roleType = body.RoleType?.SystemName or 'Selling'
-                    item.roleId = +item.property.agent_ref
-                    item.propertyId = body.PropertyId
-                    item.price = body.Price?.PriceValue
-                    ndx.dezrez.get 'property/{id}', null, id:body.PropertyId, (err, body) ->
-                      item.property.prop = body
-                      insertLead objtrans(item, templates[path]), itemCallback
+                    if not err and body
+                      item.roleType = body.RoleType?.SystemName or 'Selling'
+                      item.roleId = +item.property.agent_ref
+                      item.propertyId = body.PropertyId
+                      item.price = body.Price?.PriceValue
+                      ndx.dezrez.get 'property/{id}', null, id:body.PropertyId, (err, body) ->
+                        item.property.prop = body
+                        insertLead objtrans(item, templates[path]), itemCallback
                 else
                   item.roleType = 'Valuation'
                   insertLead objtrans(item, templates[path]), itemCallback
