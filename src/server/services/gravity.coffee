@@ -103,6 +103,7 @@ module.exports = (ndx) ->
             item.date = new Date(item.date_created).valueOf()
             if formNo is 7 and item['7'] and item['8']
               ndx.dezrez.get 'role/{id}', null, id: item['7'], (err, body) ->
+                return itemCallback() if err or not body
                 item.roleType = body.RoleType.SystemName
                 item.roleId = +item['7']
                 item.propertyId = body.PropertyId
