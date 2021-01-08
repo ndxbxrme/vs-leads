@@ -11,25 +11,23 @@ module.exports = (ndx) ->
     sellingLetting:
       date: true
       uid: (input) ->
-        'gv7:' + input.id
+        'gv26:' + input.id
       email: '2'
       user: (input) ->
         title: input['5']
         last_name: input['1']
         phone_day: input['3']
       comments: '6'
-      roleId: true
-      propertyId: true
+      roleId: '13'
       rightmoveId: 'roleId'
       "property": (input) ->
-        if input and input.prop
-          address: "#{input.prop.Address.Number or input.prop.Address.BuildingName} #{input.prop.Address.Street}"
-          address2: "#{input.prop.Address.Locality}"
-          town: input.prop.Address.Town
-          county: input.prop.Address.County
-          postcode: input.prop.Address.Postcode        
-      roleType: true
-      price: true
+        address: input['15']
+        address2: input['16']
+        town: input['17']
+        county: input['18']
+        postcode: input['20']        
+      roleType: '11'
+      price: '14'
       source: ->
         'gravity'
       method: ->
@@ -37,7 +35,7 @@ module.exports = (ndx) ->
     valuation:
       date: true
       uid: (input) ->
-        'gv3:' + input.id
+        'gv16:' + input.id
       email: '3'
       user: (input) ->
         title: input['1.2']
@@ -45,20 +43,20 @@ module.exports = (ndx) ->
         last_name: input['1.6']
         phone_day: input['4']
       comments: (input) ->
-        'When to call: ' + input['5']  + '\n'
-        'Comments: ' + input['6']  + '\n'
-        'Property Type: ' + input['8']  + '\n'
-        'Bedrooms: ' + input['9']  + '\n'
-        'Bathrooms: ' + input['10']  + '\n'
-        'Receptions: ' + input['11']  + '\n'
+        'Property Type: ' + input['16']  + '\n'
+        'Bedrooms: ' + input['18']  + '\n'
+        'Bathrooms: ' + input['20']  + '\n'
+        'Receptions: ' + input['19']  + '\n'
         'Other Info: ' + input['12']  + '\n'
-        'Preferred date: ' + input['13'] + ' @ ' + input['14']  + '\n'
+        'Preferred date 1: ' + input['22'] + ' @ ' + input['44']  + '\n'
+        'Preferred date 2: ' + input['25'] + ' @ ' + input['26']  + '\n'
+        'Comments: ' + input['27']  + '\n'
       property: (input) ->
-        address: input['2.1']
-        address2: input['2.2']
-        town: input['2.3']
-        county: input['2.4']
-        postcode: input['2.5']
+        address: input['15.1']
+        address2: input['15.2']
+        town: input['15.3']
+        county: input['15.4']
+        postcode: input['15.5']
       roleType: ->
         'Valuation'
       source: ->
