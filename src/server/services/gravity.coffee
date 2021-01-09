@@ -101,17 +101,8 @@ module.exports = (ndx) ->
           async.each res.body.response.entries, (item, itemCallback) ->
             item.date = new Date(item.date_created).valueOf()
             console.log item['7'], item['8']
-            if formNo is 26 and item['7'] and item['8']
-              ndx.dezrez.get 'role/{id}', null, id: item['7'], (err, body) ->
-                return itemCallback() if err or not body
-                item.roleType = body.RoleType.SystemName
-                item.roleId = +item['7']
-                item.propertyId = body.PropertyId
-                item.price = body.Price?.PriceValue
-                item.property = {}
-                ndx.dezrez.get 'property/{id}', null, id:body.PropertyId, (err, body) ->
-                  item.property.prop = body
-                  insertLead objtrans(item, templates.sellingLetting), itemCallback
+            if formNo is 26
+              insertLead objtrans(item, templates.sellingLetting), itemCallback
             else if formNo is 16
               insertLead objtrans(item, templates.valuation), itemCallback
             else
