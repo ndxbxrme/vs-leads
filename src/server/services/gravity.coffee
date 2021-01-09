@@ -93,13 +93,14 @@ module.exports = (ndx) ->
     superagent.get "http://vitalspace.co.uk/gravityformsapi/forms/#{formNo}/entries?api_key=#{publicKey}&signature=#{sig}&expires=#{future_unixtime}"
     .end (err, res) ->
       if err
-        console.log 'error', err
+        #console.log 'error', err
         gravityCb()
       else
-        console.log 'response', res.body.response
+        #console.log 'response', res.body.response
         if res.body.response and res.body.response.entries
           async.each res.body.response.entries, (item, itemCallback) ->
             item.date = new Date(item.date_created).valueOf()
+            console.log item
             if formNo is 26 and item['7'] and item['8']
               ndx.dezrez.get 'role/{id}', null, id: item['7'], (err, body) ->
                 return itemCallback() if err or not body
