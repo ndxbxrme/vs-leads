@@ -93,10 +93,10 @@ module.exports = (ndx) ->
     superagent.get "http://vitalspace.co.uk/gravityformsapi/forms/#{formNo}/entries?api_key=#{publicKey}&signature=#{sig}&expires=#{future_unixtime}"
     .end (err, res) ->
       if err
-        #console.log 'error', err
+        console.log 'error', err
         gravityCb()
       else
-        console.log 'formdata', formNo, item['7'], item['8']
+        console.log 'response', res.body.response
         if res.body.response and res.body.response.entries
           async.each res.body.response.entries, (item, itemCallback) ->
             item.date = new Date(item.date_created).valueOf()
