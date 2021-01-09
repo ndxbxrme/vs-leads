@@ -100,7 +100,7 @@ module.exports = (ndx) ->
         if res.body.response and res.body.response.entries
           async.each res.body.response.entries, (item, itemCallback) ->
             item.date = new Date(item.date_created).valueOf()
-            item.roleType = item['11']
+            #item.roleType = item['11']
             console.log item['11']
             if formNo is 26
               insertLead objtrans(item, templates.sellingLetting), itemCallback
