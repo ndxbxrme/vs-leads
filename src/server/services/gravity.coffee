@@ -100,7 +100,7 @@ module.exports = (ndx) ->
         if res.body.response and res.body.response.entries
           async.each res.body.response.entries, (item, itemCallback) ->
             item.date = new Date(item.date_created).valueOf()
-            if formNo is 7 and item['7'] and item['8']
+            if formNo is 26 and item['7'] and item['8']
               ndx.dezrez.get 'role/{id}', null, id: item['7'], (err, body) ->
                 return itemCallback() if err or not body
                 item.roleType = body.RoleType.SystemName
@@ -111,7 +111,7 @@ module.exports = (ndx) ->
                 ndx.dezrez.get 'property/{id}', null, id:body.PropertyId, (err, body) ->
                   item.property.prop = body
                   insertLead objtrans(item, templates.sellingLetting), itemCallback
-            else if formNo is 3
+            else if formNo is 16
               insertLead objtrans(item, templates.valuation), itemCallback
             else
               itemCallback()
@@ -121,8 +121,8 @@ module.exports = (ndx) ->
           gravityCb()
   ndx.gravity =
     fetch: ->
-      doGravity 7, ->
-        doGravity 3, ->
+      doGravity 26, ->
+        doGravity 16, ->
         #console.log 'gravity done'
   ndx.database.on 'ready', ->
     #ndx.database.delete 'leads'
