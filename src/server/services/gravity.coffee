@@ -90,7 +90,8 @@ module.exports = (ndx) ->
     route = "forms/#{formNo}/entries"
     stringToSign = publicKey + ":" + method + ":" + route + ":" + future_unixtime
     sig = CalculateSig stringToSign, privateKey
-    superagent.get "http://vitalspace.co.uk/gravityformsapi/forms/#{formNo}/entries?api_key=#{publicKey}&signature=#{sig}&expires=#{future_unixtime}"
+    console.log "contacting gravity"
+    superagent.get "https://vitalspace.co.uk/gravityformsapi/forms/#{formNo}/entries?api_key=#{publicKey}&signature=#{sig}&expires=#{future_unixtime}"
     .end (err, res) ->
       if err
         #console.log 'error', err
