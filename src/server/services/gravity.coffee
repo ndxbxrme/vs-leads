@@ -120,5 +120,5 @@ module.exports = (ndx) ->
         #console.log 'gravity done'
   ndx.database.on 'ready', ->
     #ndx.database.delete 'leads'
-    setInterval ndx.gravity.fetch, 5 * 60 * 1000
-    ndx.gravity.fetch()
+    #setInterval ndx.gravity.fetch, 5 * 60 * 1000
+    #ndx.gravity.fetch()
