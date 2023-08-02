@@ -12,6 +12,20 @@ module.exports = (ndx) ->
         cb true
       else
         cb true
+  sendEmail = (args, cb) ->
+    if args.table is 'leads'
+      try
+        lead = args.obj
+        if lead and lead.email
+          template = await ndx.database.selectOne 'emailtemplates', name: 'Auto Response - ' + lead.roleType
+          if template
+            template.to = 'richard@vitalspace.co.uk'#lead.email
+            template.lead = lead
+            ndx.email.send template
+      catch e
+        console.log e
+    cb true
   setImmediate ->
     ndx.database.on 'preInsert', decorate
     ndx.database.on 'preUpdate', decorate
+    ndx.database.on 'insert', sendEmail
