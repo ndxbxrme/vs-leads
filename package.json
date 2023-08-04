@@ -44,6 +44,7 @@
     "ndx-connect": "0.0.6",
     "ndx-cors": "0.0.10",
     "ndx-database-backup": "^0.1.0",
+    "ndx-mailgun-api": "0.0.10",
     "ndx-modified": "^0.1.2",
     "ndx-passport": "^0.5.4",
     "ndx-permissions": "^0.3.4",
