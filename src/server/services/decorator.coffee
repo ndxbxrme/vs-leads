@@ -19,7 +19,7 @@ module.exports = (ndx) ->
         if lead and lead.email
           template = await ndx.database.selectOne 'emailtemplates', name: 'Auto Response - ' + lead.roleType
           if template
-            template.to = 'richard@vitalspace.co.uk'#lead.email
+            template.to = lead.email
             template.lead = lead
             ndx.email.send template
       catch e
