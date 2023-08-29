@@ -131,14 +131,17 @@ module.exports = (ndx) ->
             callback()
       req.end body
     fetch: ->
-      async.eachSeries paths, (path, callback) ->
-        doIt path, callback
-      , ->
-        switch period
-          when 72
-            period = 1
-          when 1
-            period = 0.3
+      try
+        async.eachSeries paths, (path, callback) ->
+          doIt path, callback
+        , ->
+          switch period
+            when 72
+              period = 1
+            when 1
+              period = 0.3
+      catch e
+        console.log 'onthemarket error', e
   ndx.onthemarket = onthemarket()
   ndx.database.on 'ready', ->
     setInterval ndx.onthemarket.fetch, 5 * 60 * 1000
