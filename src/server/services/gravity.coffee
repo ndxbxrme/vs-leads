@@ -80,23 +80,24 @@ module.exports = (ndx) ->
     base64 = hash.toString(crypto.enc.Base64)
     encodeURIComponent base64
   doGravity = (formNo, gravityCb) ->
-    d = new Date()
-    expiration = 3600
-    unixtime = parseInt(d.getTime() / 1000)
-    future_unixtime = unixtime + expiration
-    publicKey = process.env.GRAVITY_PUBLIC_KEY.trim()
-    privateKey = process.env.GRAVITY_PRIVATE_KEY.trim()
-    method = "GET"
-    route = "forms/#{formNo}/entries"
-    stringToSign = publicKey + ":" + method + ":" + route + ":" + future_unixtime
-    sig = CalculateSig stringToSign, privateKey
-    console.log "contacting gravity"
-    superagent.get "https://vitalspace.co.uk/gravityformsapi/forms/#{formNo}/entries?api_key=#{publicKey}&signature=#{sig}&expires=#{future_unixtime}"
-    .end (err, res) ->
-      if err
-        #console.log 'error', err
-        gravityCb()
-      else
+    try
+      d = new Date()
+      expiration = 3600
+      unixtime = parseInt(d.getTime() / 1000)
+      future_unixtime = unixtime + expiration
+      publicKey = process.env.GRAVITY_PUBLIC_KEY.trim()
+      privateKey = process.env.GRAVITY_PRIVATE_KEY.trim()
+      method = "GET"
+      route = "forms/#{formNo}/entries"
+      stringToSign = publicKey + ":" + method + ":" + route + ":" + future_unixtime
+      sig = CalculateSig stringToSign, privateKey
+      console.log "contacting gravity"
+      superagent.get "https://vitalspace.co.uk/gravityformsapi/forms/#{formNo}/entries?api_key=#{publicKey}&signature=#{sig}&expires=#{future_unixtime}"
+      .end (err, res) ->
+        if err
+          #console.log 'error', err
+          gravityCb()
+        else
         #console.log 'response', res.body.response
         if res.body.response and res.body.response.entries
           async.each res.body.response.entries, (item, itemCallback) ->
@@ -113,6 +114,8 @@ module.exports = (ndx) ->
             gravityCb()
         else
           gravityCb()
+    catch e
+      console.log 'gravity error'
   ndx.gravity =
     fetch: ->
       doGravity 26, ->
