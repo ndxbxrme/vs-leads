@@ -63,6 +63,35 @@ module.exports = (ndx) ->
         'gravity'
       method: ->
         'web'
+    offer:
+      date: 'date_created'
+      uid: (input) ->
+        'gv31:' + input.id
+      email: '4'
+      telephone: '5'
+      applicant: (input) ->
+        input['2.2'] + ' ' + input['2.3'] + ' ' + input['2.6']
+      applicant2: (input) ->
+        return '' if not input['31.2']
+        (input['31.2'] + ' ' + input['31.3'] + ' ' + input['31.6']).trim()
+      propertyAddress: (input) ->
+        input['3.1'] + ', ' + input['3.2'] + ', ' + input['3.3'] + ', ' + input['3.5']
+      propertyId: '49'
+      offerAmount: '9'
+      movingPosition: '6'
+      financialPosition: '7'
+      hasConvenancer: '17'
+      comments: '12'
+      uploads: (input) ->
+        Object.keys(input).map (key) ->
+          val = input[key]
+          if val.includes('uploads/gravity_forms')
+            return
+              key: key,
+              file: file
+          null
+        .filter (file) -> file
+
       
   insertLead = (lead, cb) ->
     ndx.database.select 'leads',
@@ -74,6 +103,18 @@ module.exports = (ndx) ->
         ndx.database.insert 'leads', lead
         cb()
     , true
+      
+  insertOffer = (offer, cb) ->
+    ndx.database.select 'offers',
+      uid: offer.uid
+    , (offers) ->
+      if offers and offers.length
+        cb()
+      else
+        ndx.database.insert 'offers', offer
+        cb()
+    , true
+  
   
   CalculateSig = (stringToSign, privateKey) ->
     hash = crypto.HmacSHA1 stringToSign, privateKey
@@ -108,6 +149,8 @@ module.exports = (ndx) ->
               insertLead objtrans(item, templates.sellingLetting), itemCallback
             else if formNo is 16
               insertLead objtrans(item, templates.valuation), itemCallback
+            else if formNo is 31
+              insertOffer objtrans(item, templates.offer), itemCallback
             else
               itemCallback()
           , ->
@@ -120,6 +163,7 @@ module.exports = (ndx) ->
     fetch: ->
       doGravity 26, ->
         doGravity 16, ->
+          doGravity 31, ->
         #console.log 'gravity done'
   ndx.database.on 'ready', ->
     #ndx.database.delete 'leads'
