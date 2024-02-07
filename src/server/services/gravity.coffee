@@ -88,7 +88,7 @@ module.exports = (ndx) ->
           if val.includes('uploads/gravity_forms')
             return
               key: key,
-              file: file
+              file: val
           null
         .filter (file) -> file
 
