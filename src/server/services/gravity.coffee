@@ -85,7 +85,7 @@ module.exports = (ndx) ->
       uploads: (input) ->
         Object.keys(input).map (key) ->
           val = input[key]
-          if val.includes('uploads/gravity_forms')
+          if val and val.includes('uploads/gravity_forms')
             return
               key: key,
               file: val
