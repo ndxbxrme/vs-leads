@@ -113,17 +113,14 @@ module.exports = (ndx) ->
     , true
       
   insertOffer = (offer, cb) ->
-    console.log 'insert offer', offer.roleId, offer.uid
     ndx.database.select 'offers',
       uid: offer.uid
     , (offers) ->
-      console.log 'return from db select', JSON.stringify(offers, null, '  ')
       if offers and offers.length
-        console.log 'calling back'
         cb()
       else
-        console.log 'trying to insert', offer.roleId
         if offer.roleId
+          console.log 'inserting offer', offer.roleId
           ndx.database.insert 'offers', offer
           #send email
           ndx.database.selectOne 'emailtemplates', name: 'New Offer'
@@ -164,7 +161,6 @@ module.exports = (ndx) ->
           async.each res.body.response.entries, (item, itemCallback) ->
             item.date = new Date(item.date_created).valueOf()
             #item.roleType = item['11']
-            console.log item['11']
             if formNo is 26
               insertLead objtrans(item, templates.sellingLetting), itemCallback
             else if formNo is 16
@@ -187,6 +183,6 @@ module.exports = (ndx) ->
           doGravity 31, ->
         #console.log 'gravity done'
   ndx.database.on 'ready', ->
-    #ndx.database.delete 'leads'
+    #ndx.database.delete 'offers'
     setInterval ndx.gravity.fetch, 5 * 60 * 1000
     ndx.gravity.fetch()
