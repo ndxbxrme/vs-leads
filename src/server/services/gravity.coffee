@@ -113,11 +113,11 @@ module.exports = (ndx) ->
     , true
       
   insertOffer = (offer, cb) ->
-    console.log 'insert offer', offer.roleId
+    console.log 'insert offer', offer.roleId, offer.uid
     ndx.database.select 'offers',
       uid: offer.uid
     , (offers) ->
-      console.log 'return from db select'
+      console.log 'return from db select', JSON.stringify(offers, null, '  ')
       if offers and offers.length
         console.log 'calling back'
         cb()
