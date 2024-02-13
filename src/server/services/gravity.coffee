@@ -119,6 +119,7 @@ module.exports = (ndx) ->
       if offers and offers.length
         cb()
       else
+        console.log 'trying to insert', offer.roleId
         if offer.roleId
           ndx.database.insert 'offers', offer
           #send email
