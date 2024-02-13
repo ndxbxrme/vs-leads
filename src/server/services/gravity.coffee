@@ -113,11 +113,13 @@ module.exports = (ndx) ->
     , true
       
   insertOffer = (offer, cb) ->
-    console.log 'insert offer', JSON.stringify(offer, null, '  ')
+    console.log 'insert offer', offer.roleId
     ndx.database.select 'offers',
       uid: offer.uid
     , (offers) ->
+      console.log 'return from db select'
       if offers and offers.length
+        console.log 'calling back'
         cb()
       else
         console.log 'trying to insert', offer.roleId
@@ -168,7 +170,8 @@ module.exports = (ndx) ->
             else if formNo is 16
               insertLead objtrans(item, templates.valuation), itemCallback
             else if formNo is 31
-              insertOffer objtrans(item, templates.offer), itemCallback
+              if item['59']
+                insertOffer objtrans(item, templates.offer), itemCallback
             else
               itemCallback()
           , ->
