@@ -113,6 +113,7 @@ module.exports = (ndx) ->
     , true
       
   insertOffer = (offer, cb) ->
+    console.log 'insert offer', JSON.stringify(offer, null, '  ')
     ndx.database.select 'offers',
       uid: offer.uid
     , (offers) ->
