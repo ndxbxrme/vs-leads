@@ -122,7 +122,7 @@ module.exports = (ndx) ->
         if offer.roleId
           ndx.database.insert 'offers', offer
           #send email
-          ndx.database.selectOne'emailtemplates', name: 'New Offer'
+          ndx.database.selectOne 'emailtemplates', name: 'New Offer'
           .then (template) ->
             return if not template
             template.offer = offer
