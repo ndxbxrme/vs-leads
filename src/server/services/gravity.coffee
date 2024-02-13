@@ -74,14 +74,22 @@ module.exports = (ndx) ->
       applicant2: (input) ->
         return '' if not input['31.2']
         (input['31.2'] + ' ' + input['31.3'] + ' ' + input['31.6']).trim()
-      propertyAddress: (input) ->
+      applicantAddress: (input) ->
         input['3.1'] + ', ' + input['3.2'] + ', ' + input['3.3'] + ', ' + input['3.5']
       propertyId: '49'
       offerAmount: '9'
       movingPosition: '6'
       financialPosition: '7'
-      hasConvenancer: '17'
+      hasConveyancer: '17'
       comments: '12'
+      roleId: (input) ->
+        ((input['59'] or '').match(/role_id" value="([^"]+)"/) or [null, ''])[1]
+      address: (input) ->
+        ((input['59'] or '').match(/prop_address" value="([^"]+)"/) or [null, ''])[1]
+      image: (input) ->
+        ((input['59'] or '').match(/prop_image" value="([^"]+)"/) or [null, ''])[1]
+      price: (input) ->
+        ((input['59'] or '').match(/prop_price" value="([^"]+)"/) or [null, ''])[1]
       uploads: (input) ->
         Object.keys(input).map (key) ->
           val = input[key]
@@ -111,7 +119,15 @@ module.exports = (ndx) ->
       if offers and offers.length
         cb()
       else
-        ndx.database.insert 'offers', offer
+        if offer.roleId
+          ndx.database.insert 'offers', offer
+          #send email
+          ndx.database.selectOne'emailtemplates', name: 'New Offer'
+          .then (template) ->
+            return if not template
+            template.offer = offer
+            template.to = 'sales@vitalspace.co.uk'
+            ndx.email.send template
         cb()
     , true
   
