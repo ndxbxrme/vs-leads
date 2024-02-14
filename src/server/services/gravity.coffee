@@ -81,6 +81,12 @@ module.exports = (ndx) ->
       movingPosition: '6'
       financialPosition: '7'
       hasConveyancer: '17'
+      conveyancerCompany: '33'
+      conveyancerName: '34'
+      conveyancerPhone: '36'
+      conveyancerEmail: '38'
+      conveyancerAddress: (input) ->
+        input['35.1'] + ', ' + input['35.2'] + ', ' + input['35.3'] + ', ' + input['35.5']
       comments: '12'
       roleId: (input) ->
         ((input['59'] or '').match(/role_id" value="([^"]+)"/) or [null, ''])[1]
