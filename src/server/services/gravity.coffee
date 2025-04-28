@@ -36,7 +36,7 @@ module.exports = (ndx) ->
       date: true
       uid: (input) ->
         'gv24:' + input.id
-      propertyId: input['105']
+      propertyId: '105'
       email: '61'
       user: (input) ->
         {
