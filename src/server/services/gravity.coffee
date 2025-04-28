@@ -32,6 +32,57 @@ module.exports = (ndx) ->
         'gravity'
       method: ->
         'web'
+    newTenancyApplication:
+      date: true
+      uid: (input) ->
+        'gv24:' + input.id
+      propertyId: input['105']
+      email: '61'
+      user: (input) ->
+        {
+          first_name: input['2.3']
+          last_name: input['2.6']
+          phone_day: input['77']
+          dob: input['95']
+        }
+      employment: (input) ->
+        {
+          current_employer: input['100']
+          occupation: input['89']
+          time_employed: input['83']
+          salary: input['101']
+          previous_employer: input['90']
+          previous_income: input['102']
+        }
+      address: (input) ->
+        {
+          future_address: input['2.2']
+          previous_address: input['56']
+          current_address:
+            street: input['71.1']
+            address2: input['71.2']
+            town: input['71.3']
+            postcode: input['71.5']
+        }
+      preferences: (input) ->
+        {
+          smokes: input['74.1']
+          pets: input['74.2']
+          children: input['74.3']
+          currently_renting: input['74.4']
+          first_time_renter: input['74.5']
+          arrears: input['74.6']
+        }
+      rent_details: (input) ->
+        {
+          monthly_rent: input['9']
+          tenancy_start: input['99']
+        }
+      consent: '107.2'
+      source: ->
+        'gravity'
+      method: ->
+        'web'
     valuation:
       date: true
       uid: (input) ->
@@ -137,6 +188,24 @@ module.exports = (ndx) ->
             ndx.email.send template
         cb()
     , true
+  insertLettingsOffer = (offer, cb) ->
+    ndx.database.select 'offerslettings',
+      uid: offer.uid
+    , (offers) ->
+      if offers and offers.length
+        cb()
+      else
+        if offer.roleId
+          ndx.database.insert 'offerslettings', offer
+          #send email
+          ndx.database.selectOne 'emailtemplates', name: 'New Lettings Offer'
+          .then (template) ->
+            return if not template
+            template.offer = offer
+            template.to = 'lettings@vitalspace.co.uk'
+            ndx.email.send template
+        cb()
+    , true
   
   
   CalculateSig = (stringToSign, privateKey) ->
@@ -169,6 +238,8 @@ module.exports = (ndx) ->
             #item.roleType = item['11']
             if formNo is 26
               insertLead objtrans(item, templates.sellingLetting), itemCallback
+            else if formNo is 24
+              insertLettingsOffer objtrans(item, templates.newTenancyApplication), itemCallback
             else if formNo is 16
               insertLead objtrans(item, templates.valuation), itemCallback
             else if formNo is 31
@@ -187,6 +258,7 @@ module.exports = (ndx) ->
       doGravity 26, ->
         doGravity 16, ->
           doGravity 31, ->
+            doGravity 24, ->
         #console.log 'gravity done'
   ndx.database.on 'ready', ->
     #ndx.database.delete 'offers'

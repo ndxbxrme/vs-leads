@@ -3,7 +3,7 @@
 require 'ndx-server'
 .config
   database: 'db'
-  tables: ['users', 'leads', 'shorttoken', 'emailtemplates', 'offers']
+  tables: ['users', 'leads', 'shorttoken', 'emailtemplates', 'offers', 'offerslettings']
   localStorage: './data'
   hasInvite: true
   hasForgot: true
