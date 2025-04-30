@@ -198,6 +198,7 @@ module.exports = (ndx) ->
       else
         if offer.roleId
           ndx.database.insert 'offerslettings', offer
+          return cb()
           #send email
           ndx.database.selectOne 'emailtemplates', name: 'New Lettings Offer'
           .then (template) ->
