@@ -37,8 +37,11 @@ module.exports = (ndx) ->
       uid: (input) ->
         'gv24:' + input.id
       propertyId: '105'
-      roleId: 'id'
       email: '61'
+      roleId: '113'
+      address: '114'
+      image: '115'
+      price: '116'
       user: (input) ->
         {
           first_name: input['2.3']
