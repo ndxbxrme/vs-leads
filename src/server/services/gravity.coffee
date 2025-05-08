@@ -42,12 +42,19 @@ module.exports = (ndx) ->
       address: '114'
       image: '115'
       price: '116'
-      user: (input) ->
+      applicant: (input) ->
         {
+          title: input['2.2']
           first_name: input['2.3']
           last_name: input['2.6']
           phone_day: input['77']
           dob: input['95']
+        }
+      applicant2: (input) ->
+        {
+          title: input['31.2']
+          first_name: input['31.3']
+          last_name: input['31.6']
         }
       employment: (input) ->
         {
