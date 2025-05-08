@@ -58,7 +58,7 @@ module.exports = (ndx) ->
           previous_employer: input['90']
           previous_income: input['102']
         }
-      address: (input) ->
+      addresses: (input) ->
         {
           future_address: input['2.2']
           previous_address: input['56']
