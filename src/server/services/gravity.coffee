@@ -200,6 +200,7 @@ module.exports = (ndx) ->
         cb()
     , true
   insertLettingsOffer = (offer, cb) ->
+    console.log 'offer', offer
     ndx.database.select 'offerslettings',
       uid: offer.uid
     , (offers) ->
