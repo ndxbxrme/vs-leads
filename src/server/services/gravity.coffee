@@ -200,7 +200,6 @@ module.exports = (ndx) ->
         cb()
     , true
   insertLettingsOffer = (offer, cb) ->
-    console.log 'offer', offer
     ndx.database.select 'offerslettings',
       uid: offer.uid
     , (offers) ->
@@ -208,6 +207,7 @@ module.exports = (ndx) ->
         cb()
       else
         if offer.roleId
+          console.log 'inserting', offer
           ndx.database.insert 'offerslettings', offer
           return cb()
           #send email
