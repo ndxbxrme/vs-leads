@@ -225,6 +225,7 @@ module.exports = (ndx) ->
     base64 = hash.toString(crypto.enc.Base64)
     encodeURIComponent base64
   doGravity = (formNo, gravityCb) ->
+    console.log 'starting gravity', formNo
     try
       d = new Date()
       expiration = 3600
@@ -239,11 +240,12 @@ module.exports = (ndx) ->
       console.log "contacting gravity"
       superagent.get "https://vitalspace.co.uk/gravityformsapi/forms/#{formNo}/entries?api_key=#{publicKey}&signature=#{sig}&expires=#{future_unixtime}"
       .end (err, res) ->
+        console.log 'error', err
         if err
           #console.log 'error', err
           gravityCb()
         else
-        #console.log 'response', res.body.response
+        console.log 'response', res.body.response
         if res.body.response and res.body.response.entries
           async.each res.body.response.entries, (item, itemCallback) ->
             item.date = new Date(item.date_created).valueOf()
@@ -258,10 +260,13 @@ module.exports = (ndx) ->
               if item['59']
                 insertOffer objtrans(item, templates.offer), itemCallback
             else
+              console.log 'item callback'
               itemCallback()
           , ->
+            console.log 'gravity cb'
             gravityCb()
         else
+          console.log 'gravity cb 2'
           gravityCb()
     catch e
       console.log 'gravity error'
