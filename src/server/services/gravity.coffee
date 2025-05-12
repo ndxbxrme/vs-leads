@@ -248,7 +248,6 @@ module.exports = (ndx) ->
         #console.log 'response', res.body.response
         if res.body.response and res.body.response.entries
           async.each res.body.response.entries, (item, itemCallback) ->
-            console.log 'entry'
             item.date = new Date(item.date_created).valueOf()
             #item.roleType = item['11']
             if formNo is 26
@@ -260,6 +259,9 @@ module.exports = (ndx) ->
             else if formNo is 31
               if item['59']
                 insertOffer objtrans(item, templates.offer), itemCallback
+              else
+                console.log 'no offer'
+                itemCallback()
             else
               console.log 'item callback'
               itemCallback()
