@@ -204,6 +204,7 @@ module.exports = (ndx) ->
       uid: offer.uid
     , (offers) ->
       if offers and offers.length
+        console.log 'offers length', offers.length
         cb()
       else
         if offer.roleId
