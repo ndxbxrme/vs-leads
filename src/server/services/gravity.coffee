@@ -202,6 +202,7 @@ module.exports = (ndx) ->
   insertLettingsOffer = (offer, cb) ->
     ndx.database.select 'offerslettings',
       uid: offer.uid
+      deleted: null
     , (offers) ->
       if offers and offers.length
         console.log 'offers length', offers.length
@@ -247,7 +248,7 @@ module.exports = (ndx) ->
           #console.log 'error', err
           gravityCb()
         else
-        #console.log 'response', res.body.response
+          #console.log 'response', res.body.response
         if res.body.response and res.body.response.entries
           async.each res.body.response.entries, (item, itemCallback) ->
             item.date = new Date(item.date_created).valueOf()
