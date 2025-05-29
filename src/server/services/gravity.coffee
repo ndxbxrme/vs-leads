@@ -55,6 +55,15 @@ module.exports = (ndx) ->
           title: input['31.2']
           first_name: input['31.3']
           last_name: input['31.6']
+          phone_no: input['80']
+          email: input['85']
+          dob: input['98']
+          employment_status: input['62']
+          employers_name: input['87']
+          occupation: input['86']
+          basic_salary: input['103']
+          current_living status: input['68']
+          company_name: input['92']
         }
       employment: (input) ->
         {
