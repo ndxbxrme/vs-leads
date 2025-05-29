@@ -62,7 +62,7 @@ module.exports = (ndx) ->
           employers_name: input['87']
           occupation: input['86']
           basic_salary: input['103']
-          current_living status: input['68']
+          current_living_status: input['68']
           company_name: input['92']
         }
       employment: (input) ->
