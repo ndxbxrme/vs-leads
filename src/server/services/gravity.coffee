@@ -42,13 +42,34 @@ module.exports = (ndx) ->
       address: '114'
       image: '115'
       price: '116'
+      comments: '12'
       applicant: (input) ->
         {
           title: input['2.2']
           first_name: input['2.3']
           last_name: input['2.6']
-          phone_day: input['77']
+          phone_no: input['77']
+          email: input['61']
           dob: input['95']
+          living_status: input['56']
+          employment_status: input['51']
+          company_name: input['100']
+          occupation: input['89']
+          time_employed: input['83']
+          salary: input['101']
+          proof_of_identity: input['57']
+          address:
+            street: input['71.1']
+            address2: input['71.2']
+            town: input['71.3']
+            postcode: input['71.5']
+          preferences:
+            smokes: input['74.1']
+            pets: input['74.2']
+            children: input['74.3']
+            currently_renting: input['74.4']
+            first_time_renter: input['74.5']
+            arrears: input['74.6']
         }
       applicant2: (input) ->
         {
@@ -58,40 +79,25 @@ module.exports = (ndx) ->
           phone_no: input['80']
           email: input['85']
           dob: input['98']
+          living_status: input['68']
           employment_status: input['62']
-          employers_name: input['87']
+          company_name: input['87']
           occupation: input['86']
-          basic_salary: input['103']
-          current_living_status: input['68']
-          company_name: input['92']
-        }
-      employment: (input) ->
-        {
-          current_employer: input['100']
-          occupation: input['89']
-          time_employed: input['83']
-          salary: input['101']
-          previous_employer: input['90']
-          previous_income: input['102']
-        }
-      addresses: (input) ->
-        {
-          future_address: input['2.2']
-          previous_address: input['56']
-          current_address:
-            street: input['71.1']
-            address2: input['71.2']
-            town: input['71.3']
-            postcode: input['71.5']
-        }
-      preferences: (input) ->
-        {
-          smokes: input['74.1']
-          pets: input['74.2']
-          children: input['74.3']
-          currently_renting: input['74.4']
-          first_time_renter: input['74.5']
-          arrears: input['74.6']
+          time_employed: input['88']
+          salary: input['103']
+          proof_of_identity: input['47']
+          address:
+            street: input['3.1']
+            address2: input['3.2']
+            town: input['3.3']
+            postcode: input['3.5']
+          preferences:
+            smokes: input['75.1']
+            pets: input['75.2']
+            children: input['75.3']
+            currently_renting: input['75.4']
+            first_time_renter: input['75.5']
+            arrears: input['75.6']
         }
       rent_details: (input) ->
         {
