@@ -54,7 +54,7 @@ module.exports = (ndx) ->
           living_status: input['56']
           employment_status: input['51']
           company_name: input['100']
-          occupation: input['89']
+          occupation: input['117']
           time_employed: input['83']
           salary: input['101']
           proof_of_identity: input['57']
@@ -226,7 +226,6 @@ module.exports = (ndx) ->
         if offer.roleId
           console.log 'inserting', offer
           ndx.database.insert 'offerslettings', offer
-          return cb()
           #send email
           ndx.database.selectOne 'emailtemplates', name: 'New Lettings Offer'
           .then (template) ->
