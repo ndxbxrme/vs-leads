@@ -65,10 +65,10 @@ module.exports = (ndx) ->
             postcode: input['71.5']
           preferences:
             smokes: input['74.1']
-            pets: input['74.2']
-            children: input['74.3']
-            renting_agent: input['74.4']
-            renting_landlord: input['74.5']
+            renting_agent: input['74.2']
+            pets: input['74.3']
+            renting_landlord: input['74.4']
+            children: input['74.5']
             arrears: input['74.6']
         }
       applicant2: (input) ->
@@ -93,10 +93,10 @@ module.exports = (ndx) ->
             postcode: input['3.5']
           preferences:
             smokes: input['75.1']
-            pets: input['75.2']
-            children: input['75.3']
-            renting_agent: input['75.4']
-            renting_landlord: input['75.5']
+            renting_agent: input['75.2']
+            pets: input['75.3']
+            renting_landlord: input['75.4']
+            children: input['75.5']
             arrears: input['75.6']
         }
       rent_details: (input) ->
