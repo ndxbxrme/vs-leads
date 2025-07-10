@@ -28,6 +28,7 @@ module.exports = (ndx) ->
         postcode: input['20']        
       roleType: '11'
       price: '14'
+      lengthOfTenancy: '24.6'
       source: ->
         'gravity'
       method: ->
