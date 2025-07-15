@@ -43,6 +43,7 @@ module.exports = (ndx) ->
       address: '114'
       image: '115'
       price: '116'
+      lengthOfTenancy: '24.6'
       comments: '12'
       applicant: (input) ->
         {
