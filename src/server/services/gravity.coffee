@@ -191,6 +191,7 @@ module.exports = (ndx) ->
       address: '3'
       vendorName: (input) ->
         (input['4'] + ' ' + input['5'])
+      email: '8'
       user: '14'
       askingPrice: '10'
       fee: '11'
