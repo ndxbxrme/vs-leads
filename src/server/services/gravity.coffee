@@ -184,7 +184,17 @@ module.exports = (ndx) ->
               file: val
           null
         .filter (file) -> file
-
+    instruction:
+      date: 'date_created'
+      uid: (input) ->
+        'gv41' + input.id
+      address: '3'
+      vendorName: (input) ->
+        (input['4'] + ' ' + input['5'])
+      user: '14'
+      askingPrice: '10'
+      fee: '11'
+      instructedOn: 'date_created'
       
   insertLead = (lead, cb) ->
     ndx.database.select 'leads',
@@ -194,6 +204,17 @@ module.exports = (ndx) ->
         cb()
       else
         ndx.database.insert 'leads', lead
+        cb()
+    , true
+
+  insertInstruction = (instruction, cb) ->
+    ndx.database.select 'instructions',
+      uid: instruction.uid
+    , (instructions) ->
+      if instructions and instructions.length
+        cb()
+      else
+        ndx.database.insert 'instructions', instruction
         cb()
     , true
       
@@ -275,6 +296,8 @@ module.exports = (ndx) ->
               insertLettingsOffer objtrans(item, templates.newTenancyApplication), itemCallback
             else if formNo is 16
               insertLead objtrans(item, templates.valuation), itemCallback
+            else if formNo is 41
+              insertInstruction objtrans(item, templates.instruction), itemCallback
             else if formNo is 31
               if item['59']
                 insertOffer objtrans(item, templates.offer), itemCallback
