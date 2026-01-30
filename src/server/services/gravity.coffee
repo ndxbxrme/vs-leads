@@ -322,6 +322,7 @@ module.exports = (ndx) ->
         doGravity 16, ->
           doGravity 31, ->
             doGravity 24, ->
+              doGravity 41, ->
         #console.log 'gravity done'
   ndx.database.on 'ready', ->
     #ndx.database.delete 'offers'
