@@ -155,6 +155,8 @@ module.exports = (ndx) ->
         (input['31.2'] + ' ' + input['31.3'] + ' ' + input['31.6']).trim()
       applicantAddress: (input) ->
         input['3.1'] + ', ' + input['3.2'] + ', ' + input['3.3'] + ', ' + input['3.5']
+      email2: '62'
+      telephone2: '61'
       propertyId: '49'
       offerAmount: '9'
       movingPosition: '6'
